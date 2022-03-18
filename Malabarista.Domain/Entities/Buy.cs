@@ -1,12 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Malabarista.Domain.Entities
 {
-    class Buy
+    public class Buy:Entity
     {
+        public Buy()
+        {
+
+        }
+        public Buy(Grain pGrain,
+                   int pQuantity,
+                   decimal pShippiment,
+                   int pLoteNumber,
+                   DateTime pRoasteDate,
+                   DateTime p 
+            )
+        {
+
+        }
+
     }
 }

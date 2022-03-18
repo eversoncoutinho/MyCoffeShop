@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Malabarista.Domain.Entities
 {
-    class Grain:Entity
+    public class Grain:Entity
     {
         
         public Grain() { } 
@@ -41,7 +37,7 @@ namespace Malabarista.Domain.Entities
             Weight = pWeight;
             DataCadastro = DateTime.Now;
         }
-
+        
         public string Name { get; private set; } //O objeto somente é modificado via construtor
         public string Notes { get; private set; } //Colocar como objeto de valor
         public DateTime DataCadastro { get; private set; }
