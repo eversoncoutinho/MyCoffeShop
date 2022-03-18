@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Malabarista.Domain.Entities
 {
-    class Venda
+    class Buy
     {
     }
 }
