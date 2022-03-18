@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Malabarista.Infra.Data
 {
-    class MalabaristaDbContext: IdentityDbContext
+    public class MalabaristaDbContext: IdentityDbContext
     
     {
         //Sessão do banco de dados

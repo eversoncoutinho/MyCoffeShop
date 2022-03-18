@@ -3,25 +3,28 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Malabarista.API", "Malabarista.API\Malabarista.API.csproj", "{86DFBBF3-2271-4D47-B881-7FFF541DD567}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Malabarista.API", "Malabarista.API\Malabarista.API.csproj", "{86DFBBF3-2271-4D47-B881-7FFF541DD567}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B30E7396-DAB5-4A86-9FBF-DD432C06D089} = {B30E7396-DAB5-4A86-9FBF-DD432C06D089}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Malabarista.Domain", "Malabarista.Domain\Malabarista.Domain.csproj", "{E93650DD-73C0-432D-8000-463830662226}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Malabarista.Domain", "Malabarista.Domain\Malabarista.Domain.csproj", "{E93650DD-73C0-432D-8000-463830662226}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Malabarista.Infra", "Malabarista.Infra\Malabarista.Infra.csproj", "{B30E7396-DAB5-4A86-9FBF-DD432C06D089}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Malabarista.Infra", "Malabarista.Infra\Malabarista.Infra.csproj", "{B30E7396-DAB5-4A86-9FBF-DD432C06D089}"
 	ProjectSection(ProjectDependencies) = postProject
 		{E93650DD-73C0-432D-8000-463830662226} = {E93650DD-73C0-432D-8000-463830662226}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Malabarista.Application", "Malabarista.Application\Malabarista.Application.csproj", "{EA7BC64E-A0F4-4258-9FB6-B0FAFDE6CD8E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Malabarista.Application", "Malabarista.Application\Malabarista.Application.csproj", "{EA7BC64E-A0F4-4258-9FB6-B0FAFDE6CD8E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Malabarista.CrossCutting", "Malabarista.CrossCutting\Malabarista.CrossCutting.csproj", "{5E9EB150-7334-4E18-819D-8A19667D3D41}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Malabarista.CrossCutting", "Malabarista.CrossCutting\Malabarista.CrossCutting.csproj", "{5E9EB150-7334-4E18-819D-8A19667D3D41}"
 	ProjectSection(ProjectDependencies) = postProject
 		{EA7BC64E-A0F4-4258-9FB6-B0FAFDE6CD8E} = {EA7BC64E-A0F4-4258-9FB6-B0FAFDE6CD8E}
 		{B30E7396-DAB5-4A86-9FBF-DD432C06D089} = {B30E7396-DAB5-4A86-9FBF-DD432C06D089}
 		{E93650DD-73C0-432D-8000-463830662226} = {E93650DD-73C0-432D-8000-463830662226}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Malabarista.Web", "Malabarista.Web\Malabarista.Web.csproj", "{15635E6C-1395-438D-B7DA-046BA23F024D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Malabarista.Web", "Malabarista.Web\Malabarista.Web.csproj", "{15635E6C-1395-438D-B7DA-046BA23F024D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
