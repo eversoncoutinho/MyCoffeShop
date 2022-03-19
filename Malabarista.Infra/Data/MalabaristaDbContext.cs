@@ -29,9 +29,6 @@ namespace Malabarista.Infra.Data
 
 
 
-
-            //Para evitar erro de  Specified key was too long; max key length is 3072 bytes
-
             builder.Entity<IdentityUser>(entity => entity.Property(m => m.Id).HasMaxLength(85));
             builder.Entity<IdentityUser>(entity => entity.Property(m => m.NormalizedEmail).HasMaxLength(85));
             builder.Entity<IdentityUser>(entity => entity.Property(m => m.NormalizedUserName).HasMaxLength(85));

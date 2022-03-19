@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Malabarista.Domain.Entities
 {
@@ -7,14 +8,14 @@ namespace Malabarista.Domain.Entities
         
         public Grain() { } 
         public Grain(string pName,
-                    string pNotes,
-                    string pVariety,
-                    int pAltitude,
-                    string pProcess, //natural, wash, honey, fermentated
-                    string pOrigin, 
-                    string pDescription,
-                    string pRoasterProfile, //espresso, filter, Omni Roast
-                    string pProducer,
+                     string pNotes,
+                     string pVariety,
+                     int pAltitude,
+                     string pProcess, //natural, wash, honey, fermentated
+                     string pOrigin, 
+                     string pDescription,
+                     string pRoasterProfile, //espresso, filter, Omni Roast
+                     string pProducer,
                     string pRoaster,
                     decimal pWeight
                 )
@@ -37,11 +38,10 @@ namespace Malabarista.Domain.Entities
             Weight = pWeight;
             DataCadastro = DateTime.Now;
         }
-        
+
         public string Name { get; private set; } //O objeto somente é modificado via construtor
         public string Notes { get; private set; } //Colocar como objeto de valor
-        public DateTime DataCadastro { get; private set; }
-
+        
         public string Variety { get; private set; }
 
         public int Altitude { get; private set; }
@@ -52,6 +52,8 @@ namespace Malabarista.Domain.Entities
         public string Roaster { get; private set; }
         public string Producer { get; private set; }
         public decimal Weight { get; private set; }
+        public DateTime DataCadastro { get; private set; }
+
         //public  EFormaPagamento FormaPagamento { get; private set; }
         //public ICollection<Produto> Produtos { get; private set; } //varios representante pode ter varios produtos
     }

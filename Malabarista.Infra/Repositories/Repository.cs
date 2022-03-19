@@ -11,7 +11,7 @@ namespace Malabarista.Infra.Repositories
 {
     public class Repository<T> : IRepository<T> where T : class
     {
-        protected MalabaristaDbContext _context;
+        private MalabaristaDbContext _context;
 
         public Repository(MalabaristaDbContext context)
         {

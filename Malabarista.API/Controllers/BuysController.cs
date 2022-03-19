@@ -1,11 +1,7 @@
 ﻿using Malabarista.Domain.Entities;
 using Malabarista.Infra.Data;
-using Microsoft.AspNetCore.Http;
+using Malabarista.Infra.Repositories;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Malabarista.API.Controllers
 {
@@ -13,12 +9,12 @@ namespace Malabarista.API.Controllers
     [ApiController]
     public class BuysController : ControllerBase
     {
-        private readonly MalabaristaDbContext _context;
+        private readonly UnitOfWork _uof;
 
-        public BuysController(MalabaristaDbContext context)
+        public BuysController(UnitOfWork context)
         {
-            _context = context;
+            _uof = context;
         }
-
+        
     }
 }
