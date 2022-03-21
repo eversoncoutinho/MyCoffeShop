@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Malabarista.Infra.Migrations
 {
     [DbContext(typeof(MalabaristaDbContext))]
-    [Migration("20220318212726_initial")]
-    partial class initial
+    [Migration("20220320135147_InitialMigrations")]
+    partial class InitialMigrations
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

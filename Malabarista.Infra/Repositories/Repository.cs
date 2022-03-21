@@ -1,4 +1,5 @@
-﻿using Malabarista.Infra.Data;
+﻿using Malabarista.Domain.Interfaces;
+using Malabarista.Infra.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

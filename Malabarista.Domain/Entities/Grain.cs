@@ -6,18 +6,20 @@ namespace Malabarista.Domain.Entities
     public class Grain:Entity
     {
         
-        public Grain() { } 
+        public Grain() { }
         public Grain(string pName,
                      string pNotes,
                      string pVariety,
                      int pAltitude,
                      string pProcess, //natural, wash, honey, fermentated
-                     string pOrigin, 
+                     string pOrigin,
                      string pDescription,
                      string pRoasterProfile, //espresso, filter, Omni Roast
                      string pProducer,
                     string pRoaster,
                     decimal pWeight
+                    
+
                 )
         {
             if (pNotes == "" || pName == "")
@@ -52,7 +54,7 @@ namespace Malabarista.Domain.Entities
         public string Roaster { get; private set; }
         public string Producer { get; private set; }
         public decimal Weight { get; private set; }
-        public DateTime DataCadastro { get; private set; }
+        public DateTime DataCadastro { get; private set; } 
 
         //public  EFormaPagamento FormaPagamento { get; private set; }
         //public ICollection<Produto> Produtos { get; private set; } //varios representante pode ter varios produtos

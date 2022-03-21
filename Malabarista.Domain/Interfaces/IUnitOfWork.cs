@@ -1,4 +1,4 @@
-﻿namespace Malabarista.Infra.Repositories
+﻿namespace Malabarista.Domain.Interfaces
 {
     public interface IUnitOfWork
     {

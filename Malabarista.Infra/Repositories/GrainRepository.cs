@@ -1,4 +1,5 @@
 ﻿using Malabarista.Domain.Entities;
+using Malabarista.Domain.Interfaces;
 using Malabarista.Infra.Data;
 
 namespace Malabarista.Infra.Repositories

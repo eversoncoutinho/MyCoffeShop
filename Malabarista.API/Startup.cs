@@ -1,3 +1,6 @@
+using AutoMapper;
+using Malabarista.Application.Mappings;
+using Malabarista.Domain.Interfaces;
 using Malabarista.Infra.Data;
 using Malabarista.Infra.Repositories;
 using Microsoft.AspNetCore.Builder;
@@ -21,13 +24,20 @@ namespace Malabarista.API
 
         public void ConfigureServices(IServiceCollection services)
         {
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(profile: new MappingProfile());
+            });
+
+            IMapper mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
             //Adicionando o Unit of Work
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             string mySqlStringConection = Configuration.GetConnectionString("DefaultString");
             services.AddDbContext<MalabaristaDbContext>(
                                   option => option.UseMySQL(mySqlStringConection));
-
+            
             //Importantíssimo
             services.AddControllers().AddNewtonsoftJson(options =>
               options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
