@@ -31,8 +31,8 @@ namespace Malabarista.API.Controllers
         {
             
             try {
-            
-                var grainList = _uof.GrainRepository.Get().ToList
+
+                var grainList = _uof.GrainRepository.Get().ToList();
                     
                 if (grainList.Count == 0)
             {
