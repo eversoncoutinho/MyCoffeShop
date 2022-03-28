@@ -15,8 +15,7 @@ namespace Malabarista.Domain.Entities
                    decimal pShippiment,
                    int pLoteNumber,
                    DateTime pRoasteDate,
-                   DateTime pBuyDate
-            )
+                   DateTime pBuyDate)
         {
             Grain = pGrain;
             Quantity = pQuantity;
@@ -31,6 +30,5 @@ namespace Malabarista.Domain.Entities
         public int LoteNumber { get; private set; }
         public DateTime RoasteDate { get; private set; }
         public DateTime BuyDate { get; private set; }
-
     }
 }

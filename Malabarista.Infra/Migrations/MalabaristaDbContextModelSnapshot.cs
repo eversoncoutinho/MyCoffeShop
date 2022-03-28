@@ -19,15 +19,15 @@ namespace Malabarista.Infra.Migrations
 
             modelBuilder.Entity("Malabarista.Domain.Entities.Buy", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("BuyDate")
                         .HasColumnType("datetime");
 
-                    b.Property<long?>("GrainId")
-                        .HasColumnType("bigint");
+                    b.Property<int?>("GrainId")
+                        .HasColumnType("int");
 
                     b.Property<int>("LoteNumber")
                         .HasColumnType("int");
@@ -39,7 +39,7 @@ namespace Malabarista.Infra.Migrations
                         .HasColumnType("datetime");
 
                     b.Property<decimal>("Shippiment")
-                        .HasColumnType("decimal(18, 2)");
+                        .HasColumnType("decimal(65,30)");
 
                     b.HasKey("Id");
 
@@ -50,49 +50,53 @@ namespace Malabarista.Infra.Migrations
 
             modelBuilder.Entity("Malabarista.Domain.Entities.Grain", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    b.Property<int>("Altitude")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("DateRegister")
+                    b.Property<DateTime>("DataCadastro")
                         .HasColumnType("datetime");
 
-                    b.Property<string>("Description")
-                        .HasColumnType("text");
-
                     b.Property<string>("Name")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
-                    b.Property<string>("Notes")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Origin")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Process")
-                        .HasColumnType("text");
+                    b.Property<int>("Process")
+                        .HasColumnType("int");
 
                     b.Property<string>("Producer")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Roaster")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
-                    b.Property<string>("RoasterProfile")
-                        .HasColumnType("text");
+                    b.Property<int>("RoasterProfile")
+                        .HasColumnType("int");
 
-                    b.Property<string>("Variety")
-                        .HasColumnType("text");
+                    b.Property<int?>("TasteId")
+                        .HasColumnType("int");
 
                     b.Property<decimal>("Weight")
-                        .HasColumnType("decimal(18, 2)");
+                        .HasColumnType("decimal(65,30)");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("TasteId");
+
                     b.ToTable("Grains");
+                });
+
+            modelBuilder.Entity("Malabarista.Domain.Entities.Taste", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("PronouncedNote")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Tastes");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -103,7 +107,7 @@ namespace Malabarista.Infra.Migrations
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Name")
                         .HasMaxLength(256)
@@ -130,10 +134,10 @@ namespace Malabarista.Infra.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("ClaimType")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("ClaimValue")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("RoleId")
                         .IsRequired()
@@ -158,7 +162,7 @@ namespace Malabarista.Infra.Migrations
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256)
@@ -171,7 +175,7 @@ namespace Malabarista.Infra.Migrations
                         .HasColumnType("tinyint(1)");
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(85)
@@ -182,16 +186,16 @@ namespace Malabarista.Infra.Migrations
                         .HasColumnType("varchar(85)");
 
                     b.Property<string>("PasswordHash")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("PhoneNumber")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("tinyint(1)");
 
                     b.Property<string>("SecurityStamp")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("tinyint(1)");
@@ -220,10 +224,10 @@ namespace Malabarista.Infra.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("ClaimType")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("ClaimValue")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("UserId")
                         .IsRequired()
@@ -248,7 +252,7 @@ namespace Malabarista.Infra.Migrations
                         .HasColumnType("varchar(85)");
 
                     b.Property<string>("ProviderDisplayName")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("UserId")
                         .IsRequired()
@@ -294,7 +298,7 @@ namespace Malabarista.Infra.Migrations
                         .HasColumnType("varchar(85)");
 
                     b.Property<string>("Value")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.HasKey("UserId", "LoginProvider", "Name");
 
@@ -308,6 +312,69 @@ namespace Malabarista.Infra.Migrations
                         .HasForeignKey("GrainId");
 
                     b.Navigation("Grain");
+                });
+
+            modelBuilder.Entity("Malabarista.Domain.Entities.Grain", b =>
+                {
+                    b.HasOne("Malabarista.Domain.Entities.Taste", "Taste")
+                        .WithMany("Grains")
+                        .HasForeignKey("TasteId");
+
+                    b.OwnsOne("Malabarista.Domain.ValueObjects.GrainChar", "GrainChar", b1 =>
+                        {
+                            b1.Property<int>("GrainId")
+                                .HasColumnType("int");
+
+                            b1.Property<int>("Altitude")
+                                .HasColumnType("int");
+
+                            b1.Property<string>("Description")
+                                .HasColumnType("longtext");
+
+                            b1.Property<string>("Origin")
+                                .HasColumnType("longtext");
+
+                            b1.Property<string>("Variety")
+                                .HasColumnType("longtext");
+
+                            b1.HasKey("GrainId");
+
+                            b1.ToTable("Grains");
+
+                            b1.WithOwner()
+                                .HasForeignKey("GrainId");
+                        });
+
+                    b.Navigation("GrainChar");
+
+                    b.Navigation("Taste");
+                });
+
+            modelBuilder.Entity("Malabarista.Domain.Entities.Taste", b =>
+                {
+                    b.OwnsOne("Malabarista.Domain.ValueObjects.GrainNotes", "GrainNotes", b1 =>
+                        {
+                            b1.Property<int>("TasteId")
+                                .HasColumnType("int");
+
+                            b1.Property<string>("PrimaryNote")
+                                .HasColumnType("longtext");
+
+                            b1.Property<string>("SecondaryNote")
+                                .HasColumnType("longtext");
+
+                            b1.Property<string>("TerciaryNote")
+                                .HasColumnType("longtext");
+
+                            b1.HasKey("TasteId");
+
+                            b1.ToTable("Tastes");
+
+                            b1.WithOwner()
+                                .HasForeignKey("TasteId");
+                        });
+
+                    b.Navigation("GrainNotes");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -359,6 +426,11 @@ namespace Malabarista.Infra.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Malabarista.Domain.Entities.Taste", b =>
+                {
+                    b.Navigation("Grains");
                 });
 #pragma warning restore 612, 618
         }

@@ -3,6 +3,8 @@
     public interface IUnitOfWork
     {
         IGrainRepository GrainRepository { get; }
+        ITasteRepository TasteRepository { get; }
+
         void Commit();
     }
 }

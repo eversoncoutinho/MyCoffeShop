@@ -1,3 +1,5 @@
+
+
 using AutoMapper;
 using Malabarista.Application.Mappings;
 using Malabarista.Domain.Interfaces;
@@ -10,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using System;
 
 namespace Malabarista.API
 {
@@ -24,6 +27,8 @@ namespace Malabarista.API
 
         public void ConfigureServices(IServiceCollection services)
         {
+            //Mapaementod as DTOs para os Entities
+
             var mappingConfig = new MapperConfiguration(mc =>
             {
                 mc.AddProfile(profile: new MappingProfile());
@@ -31,12 +36,13 @@ namespace Malabarista.API
 
             IMapper mapper = mappingConfig.CreateMapper();
             services.AddSingleton(mapper);
+            
             //Adicionando o Unit of Work
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-            string mySqlStringConection = Configuration.GetConnectionString("DefaultString");
+            var mySqlStringConection = Configuration["ConnectionStrings:DefaultString"];
             services.AddDbContext<MalabaristaDbContext>(
-                                  option => option.UseMySQL(mySqlStringConection));
+                                  option => option.UseMySql(mySqlStringConection, new MySqlServerVersion(new Version())));;
             
             //Importantíssimo
             services.AddControllers().AddNewtonsoftJson(options =>
@@ -48,7 +54,8 @@ namespace Malabarista.API
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Malabarista.API", Version = "v1" });
             });
 
- 
+
+            services.AddMvc();
 
         }
 
@@ -72,6 +79,7 @@ namespace Malabarista.API
             {
                 endpoints.MapControllers();
             });
+        
         }
     }
 }

@@ -9,7 +9,7 @@ namespace Malabarista.Application.Mappings
         public MappingProfile()
         {
             CreateMap<Grain, GrainDTO>().ReverseMap();
-            
+            CreateMap<Taste, TasteDTO>().ReverseMap();
 
         }
     }

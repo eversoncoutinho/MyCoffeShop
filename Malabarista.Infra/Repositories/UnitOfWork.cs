@@ -9,7 +9,7 @@ namespace Malabarista.Infra.Repositories
 
         //Coloque aqui os repositórios
         private GrainRepository _grainRepo;
-        
+        private TasteRepository _tasteRepo;
 
         public MalabaristaDbContext _context;
 
@@ -24,11 +24,15 @@ namespace Malabarista.Infra.Repositories
             {
               return _grainRepo = _grainRepo ?? new GrainRepository(_context);
             }
-            
-
         }
 
-
+        public ITasteRepository TasteRepository
+        {
+            get
+            {
+                return _tasteRepo = _tasteRepo ?? new TasteRepository(_context);
+            }
+        }
 
         public void Commit()
         {

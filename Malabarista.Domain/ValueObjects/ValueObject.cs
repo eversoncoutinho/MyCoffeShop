@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace Malabarista.Domain.ValueObjects
 
 {
+
     //Classe base do OV
     public abstract class ValueObject<T>
         where T : ValueObject<T>

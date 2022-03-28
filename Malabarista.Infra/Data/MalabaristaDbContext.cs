@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Malabarista.Domain.ValueObjects;
 
 namespace Malabarista.Infra.Data
 {
@@ -20,11 +21,27 @@ namespace Malabarista.Infra.Data
         //Mapeamento das entidades em tabelas
         public DbSet<Buy> Buys { get; set; }
         public DbSet<Grain> Grains { get; set; }
-
+        public DbSet<Taste> Tastes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+
+            //            builder.Entity<GrainChar>().HasNoKey();
+            //builder.Entity<Grain>().HasKey(n => n.Id);
+
+            //builder.Entity<GrainChar>().HasNoKey();
+
+            var grain = builder.Entity<Grain>();
+            var taste = builder.Entity<Taste>();
+
+            grain.OwnsOne(typeof(GrainChar), "GrainChar");
+            taste.OwnsOne(typeof(GrainNotes),"GrainNotes");
+
+            builder.Entity<Grain>().HasOne(b=>b.Taste).WithMany(a=>a.Grains).HasForeignKey("TasteId");
+            
+
+
 
 
 

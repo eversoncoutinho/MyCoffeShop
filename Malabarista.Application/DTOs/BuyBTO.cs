@@ -8,6 +8,7 @@ namespace Malabarista.Application.DTOs
 {
     public class BuyBTO
     {
+        public int Id { get; set; }
         public GrainDTO Grain { get; set; }
         public int Quantity { get; private set; }
         public decimal Shippiment { get; private set; }

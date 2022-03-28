@@ -1,8 +1,10 @@
-﻿namespace Malabarista.Domain.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Malabarista.Domain.Entities
 {
     public abstract class Entity
         {
-            public virtual long Id { get; protected set; }
+            public int Id { get; protected set; }
             public override bool Equals(object obj)
             {
                 var other = obj as Entity;

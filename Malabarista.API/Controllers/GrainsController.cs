@@ -29,11 +29,12 @@ namespace Malabarista.API.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<GrainDTO>> GetGrains()
         {
-            try { 
             
-            var grainList = _uof.GrainRepository.Get().ToList();
+            try {
             
-            if (grainList.Count == 0)
+                var grainList = _uof.GrainRepository.Get().ToList
+                    
+                if (grainList.Count == 0)
             {
                 return NotFound($"Nenhum item cadastrado");
             }
@@ -42,7 +43,7 @@ namespace Malabarista.API.Controllers
             
                 return grainDTOList;
             }
-            catch (Exception)
+                catch (Exception)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, "Algum erro interno no Get");
             };
@@ -93,26 +94,39 @@ namespace Malabarista.API.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] GrainDTO grainDto)
         {
-            try
-            {
-                var grain = _mapper.Map<Grain>(grainDto);
-                if (grain.Name==null)
-                {
-                    return NotFound("JsonNulo");
-                }
+            var grain = _mapper.Map<Grain>(grainDto);
 
-                _uof.GrainRepository.Add(grain);
-                _uof.Commit();
+            var taste = new Taste(grain.Taste.GrainNotes,grain.Taste.PronouncedNote);
+            _uof.GrainRepository.Add(grain);
+            _uof.TasteRepository.Add(taste);
+            
 
-                //volta para o cliente via DTO
-                var grainDTO = _mapper.Map<GrainDTO>(grain);
-                return CreatedAtAction("GetGrain", //precisa ter o mesmo nome da action 
-                                        new { id = grain.Id }, grainDTO);
-            }
-            catch (Exception)
-            {
-                return StatusCode(StatusCodes.Status400BadRequest, $"Não foi possível criar a categoria {grainDto.Name}");
-            }
+            _uof.Commit();
+
+            var grainDTO = _mapper.Map<GrainDTO>(grain);
+            return CreatedAtAction("GetGrain", //precisa ter o mesmo nome da action 
+                                    new { id = grain.Id }, grainDTO);
+
+            //try
+            //{
+            //    var grain = _mapper.Map<Grain>(grainDto);
+            //    if (grain.Name==null)
+            //    {
+            //        return NotFound("JsonNulo");
+            //    }
+
+            //    _uof.GrainRepository.Add(grain);
+            //    _uof.Commit();
+
+            //    //volta para o cliente via DTO
+            //    var grainDTO = _mapper.Map<GrainDTO>(grain);
+            //    return CreatedAtAction("GetGrain", //precisa ter o mesmo nome da action 
+            //                            new { id = grain.Id }, grainDTO);
+            //}
+            //catch (Exception)
+            //{
+            //    return StatusCode(StatusCodes.Status400BadRequest, $"Não foi possível criar a categoria {grainDto.Name}");
+            //}
         }
 
         // DELETE: api/Grains/5
