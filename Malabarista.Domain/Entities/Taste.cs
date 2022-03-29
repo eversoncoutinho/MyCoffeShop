@@ -12,9 +12,9 @@ namespace Malabarista.Domain.Entities
     {
         //TO DO: Validate
         public Taste() { }
-        public Taste(GrainNotes notas, string pronouncedNote)
+        public Taste(GrainNotes pGrainNotes, string pronouncedNote)
         {
-            GrainNotes = notas;
+            GrainNotes = pGrainNotes;
             PronouncedNote = pronouncedNote;
         }
 

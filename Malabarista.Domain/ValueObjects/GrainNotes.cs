@@ -33,7 +33,6 @@ namespace Malabarista.Domain.ValueObjects
         {
             decimal hashCode = SecondaryNote.GetHashCode();
             return hashCode;
-
         }
     }
 }

@@ -42,8 +42,6 @@ namespace Malabarista.Domain.Entities
         public string Name { get; private set; } //O objeto somente é modificado via construtor
         public GrainChar GrainChar { get; private set; } //Colocar como objeto de valor
         //public string Variety { get; private set; }
-        
-
         public EProcess Process { get; private set; }
         public ERoasterProfile RoasterProfile { get; private set; }
         public string Roaster { get; private set; } //OV

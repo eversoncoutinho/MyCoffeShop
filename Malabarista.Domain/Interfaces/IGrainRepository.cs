@@ -5,6 +5,7 @@ namespace Malabarista.Domain.Interfaces
 {
     public interface IGrainRepository:IRepository<Grain>
     {
-        
+        IQueryable<Grain> GetGrains();
+
     }
 }

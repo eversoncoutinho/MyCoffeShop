@@ -8,6 +8,7 @@ using Malabarista.Infra.Repositories;
 using Malabarista.Domain.Interfaces;
 using AutoMapper;
 using Malabarista.Application.DTOs;
+using Malabarista.Domain.ValueObjects;
 //using System.Web.Http;
 
 namespace Malabarista.API.Controllers
@@ -27,29 +28,26 @@ namespace Malabarista.API.Controllers
 
         // GET: api/Grains
         [HttpGet]
-        public ActionResult<IEnumerable<GrainDTO>> GetGrains()
+        public ActionResult<List<GrainTasteDTO>> GetGrains()
         {
             
             try {
-
-                var grainList = _uof.GrainRepository.Get().ToList();
-                    
-                if (grainList.Count == 0)
-            {
-                return NotFound($"Nenhum item cadastrado");
-            }
-
-            var grainDTOList = _mapper.Map<List<GrainDTO>>(grainList);
+            var getGrainTaste = _uof.GrainRepository.GetGrains();
             
-                return grainDTOList;
-            }
-                catch (Exception)
+            if (getGrainTaste.Count()==0)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Algum erro interno no Get");
-            };
-        }
+                return NotFound($"Nenhum Grão cadastrado no banco de dados");
+            }
+                var grainDTOList = _mapper.Map<List<GrainTasteDTO>>(getGrainTaste);
+                return grainDTOList;
+                }
+            catch (Exception)
+                {
+                    return StatusCode(StatusCodes.Status500InternalServerError, "Erro no servidor");
+                };
+            }
 
-        
+
         [HttpGet("{id}")]
         public ActionResult<GrainDTO> GetGrain(int id)
         {
@@ -98,7 +96,7 @@ namespace Malabarista.API.Controllers
 
             var taste = new Taste(grain.Taste.GrainNotes,grain.Taste.PronouncedNote);
             _uof.GrainRepository.Add(grain);
-            _uof.TasteRepository.Add(taste);
+            //_uof.TasteRepository.Add(taste);
             
 
             _uof.Commit();
