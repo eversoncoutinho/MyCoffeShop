@@ -38,7 +38,7 @@ namespace Malabarista.Infra.Data
             grain.OwnsOne(typeof(GrainChar), "GrainChar");
             taste.OwnsOne(typeof(GrainNotes),"GrainNotes");
 
-            builder.Entity<Grain>().HasOne(b=>b.Taste).WithMany(a=>a.Grains).HasForeignKey("TasteId");
+            builder.Entity<Grain>().HasOne(b=>b.Taste).WithMany(a=>a.Grains).HasForeignKey("TasteId").OnDelete(DeleteBehavior.Cascade);
 
             builder.Entity<Grain>().Property(n => n.Weight).HasColumnType("decimal(5,2)");
 
