@@ -7,17 +7,15 @@ using System.Threading.Tasks;
 
 namespace Malabarista.Application.DTOs
 {
-    public class TasteDTO
+    public class TasteChooseDTO
     {
-        public TasteDTO(int id, GrainNotes grainNotes, string pronouncedNote)
+        public TasteChooseDTO() { }
+        public TasteChooseDTO(GrainNotes grainNotes, string pronouncedNote)
         {
-            Id = id;
+            
             GrainNotes = grainNotes;
             PronouncedNote = pronouncedNote;
         }
-
-        public int Id { get; set; }
-        public int Year { get; set; }
         public GrainNotes GrainNotes { get; set; }
         public string PronouncedNote { get; set; }
     }

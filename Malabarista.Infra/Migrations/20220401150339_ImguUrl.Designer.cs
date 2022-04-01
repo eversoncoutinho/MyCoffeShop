@@ -3,14 +3,16 @@ using System;
 using Malabarista.Infra.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Malabarista.Infra.Migrations
 {
     [DbContext(typeof(MalabaristaDbContext))]
-    partial class MalabaristaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220401150339_ImguUrl")]
+    partial class ImguUrl
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -335,8 +337,8 @@ namespace Malabarista.Infra.Migrations
                             b1.Property<string>("Description")
                                 .HasColumnType("longtext");
 
-                            b1.Property<byte[]>("ImgUrl")
-                                .HasColumnType("longblob");
+                            b1.Property<byte>("ImgUrl")
+                                .HasColumnType("tinyint unsigned");
 
                             b1.Property<string>("Origin")
                                 .HasColumnType("longtext");

@@ -1,7 +1,9 @@
 
 
 using AutoMapper;
+using Malabarista.Application.Interfaces;
 using Malabarista.Application.Mappings;
+using Malabarista.Application.Services;
 using Malabarista.Domain.Interfaces;
 using Malabarista.Infra.Data;
 using Malabarista.Infra.Repositories;
@@ -39,10 +41,17 @@ namespace Malabarista.API
             
             //Adicionando o Unit of Work
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IFilterGrainService, FilterGrainService>();
+
+
 
             var mySqlStringConection = Configuration["ConnectionStrings:DefaultString"];
             services.AddDbContext<MalabaristaDbContext>(
-                                  option => option.UseMySql(mySqlStringConection, new MySqlServerVersion(new Version())));;
+                                  option => option.UseMySql(mySqlStringConection
+                                  ,new MySqlServerVersion(new Version())
+                                  //,options => options.EnableRetryOnFailure()
+                                  )
+                                  );
             
             //Importantíssimo
             services.AddControllers().AddNewtonsoftJson(options =>

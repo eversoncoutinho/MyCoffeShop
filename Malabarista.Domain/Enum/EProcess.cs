@@ -9,8 +9,8 @@ namespace Malabarista.Domain.Enum
     public enum EProcess
     {
         Natural=1, 
-        Wash=2, 
+        Washed=2, 
         Honey=3, 
-        Fermentated=4
+        Anaerobic=4
     }
 }
