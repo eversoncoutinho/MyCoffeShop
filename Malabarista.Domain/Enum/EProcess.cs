@@ -4,9 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Malabarista.Domain.Entities
+namespace Malabarista.Domain.Enum
 {
-    class Venda
+    public enum EProcess
     {
+        Natural=1, 
+        Washed=2, 
+        Honey=3, 
+        Anaerobic=4
     }
 }

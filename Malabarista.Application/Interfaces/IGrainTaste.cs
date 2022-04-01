@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Malabarista.Domain.Entities
+namespace Malabarista.Application.Interfaces
 {
-    class Grao
+    class IGrainTaste
     {
+        //TODO ADD Grain TASTE
     }
 }
