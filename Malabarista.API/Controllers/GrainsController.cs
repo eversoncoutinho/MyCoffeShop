@@ -4,10 +4,11 @@ using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Malabarista.Domain.Entities;
-using Malabarista.Infra.Repositories;
 using Malabarista.Domain.Interfaces;
 using AutoMapper;
 using Malabarista.Application.DTOs;
+using Malabarista.Application.Services;
+using Malabarista.Application.Interfaces;
 using Malabarista.Domain.ValueObjects;
 //using System.Web.Http;
 
@@ -17,28 +18,42 @@ namespace Malabarista.API.Controllers
     [ApiController]
     public class GrainsController : ControllerBase
     {
+        private readonly IFilterGrainService ifilterGrainService;
         private readonly IUnitOfWork _uof;
         private readonly IMapper _mapper;
-        public GrainsController(IUnitOfWork context,
-            IMapper mapper)
+        public GrainsController(IFilterGrainService filterGrainService, 
+                                IUnitOfWork context,
+                                IMapper mapper)
         {
             _uof = context;
             _mapper = mapper;
+            ifilterGrainService = filterGrainService;
         }
+        // GET: api/Grains/taste
+        
+        [HttpGet("taste")]
+        public ActionResult<List<GrainByTasteDTO>> GetGrainsByTaste([FromQuery] string pronoucedNote)
+        {
+            
+            var tasteDTO = new TasteChooseDTO(null,pronoucedNote);
+//          var testDTO = new TasteChooseDTO(new GrainNotes(taste.GrainNotes, "", ""), taste.PronouncedNote);
 
+            return ifilterGrainService.GetGrainByNotes(tasteDTO);
+        }
+        
         // GET: api/Grains
         [HttpGet]
-        public ActionResult<List<GrainTasteDTO>> GetGrains()
+        public ActionResult<List<GrainDTO>> GetGrains()
         {
             //
             try {
-            var getGrainTaste = _uof.GrainRepository.GetGrains();
+            var getGrainTaste = _uof.GrainRepository.GetGrainsAndTaste();
             
             if (getGrainTaste.Count()==0)
             {
                 return NotFound($"Nenhum Grão cadastrado no banco de dados");
             }
-                var grainDTOList = _mapper.Map<List<GrainTasteDTO>>(getGrainTaste);
+                var grainDTOList = _mapper.Map<List<GrainDTO>>(getGrainTaste);
                 return grainDTOList;
                 }
             catch (Exception)
@@ -94,7 +109,9 @@ namespace Malabarista.API.Controllers
         {
             var grain = _mapper.Map<Grain>(grainDto);
 
-            var taste = new Taste(grain.Taste.GrainNotes,grain.Taste.PronouncedNote);
+            //var taste = new Taste(grain.Taste.Year,
+            //                      grain.Taste.GrainNotes,
+            //                      grain.Taste.PronouncedNote);
             _uof.GrainRepository.Add(grain);
             //_uof.TasteRepository.Add(taste);
             

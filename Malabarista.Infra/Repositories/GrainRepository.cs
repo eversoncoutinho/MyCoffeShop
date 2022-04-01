@@ -14,10 +14,10 @@ namespace Malabarista.Infra.Repositories
         {
             _context = contexto;
         }
-
-        public IQueryable<Grain> GetGrains()
+        
+        public IQueryable<Grain> GetGrainsAndTaste()
         {
-            IQueryable<Grain> resultado = _context.Grains.Include(n => n.Taste).AsQueryable();
+            IQueryable<Grain> resultado = _context.Grains.Include(n => n.Taste);
             return resultado;
         }
     }

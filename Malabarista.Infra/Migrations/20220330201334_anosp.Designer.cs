@@ -3,14 +3,16 @@ using System;
 using Malabarista.Infra.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Malabarista.Infra.Migrations
 {
     [DbContext(typeof(MalabaristaDbContext))]
-    partial class MalabaristaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220330201334_anosp")]
+    partial class anosp
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

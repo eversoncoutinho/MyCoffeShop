@@ -1,9 +1,5 @@
 ﻿using Malabarista.Domain.ValueObjects;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Malabarista.Domain.Entities
 
@@ -12,12 +8,13 @@ namespace Malabarista.Domain.Entities
     {
         //TO DO: Validate
         public Taste() { }
-        public Taste(GrainNotes pGrainNotes, string pronouncedNote)
+        public Taste(int pYear,GrainNotes pGrainNotes, string pronouncedNote)
         {
+            Year = pYear;
             GrainNotes = pGrainNotes;
             PronouncedNote = pronouncedNote;
         }
-
+        public int Year { get; private set; }
         public GrainNotes GrainNotes { get; private set; }
         public string PronouncedNote { get; private set; }
 
