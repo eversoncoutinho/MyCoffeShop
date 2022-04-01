@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Malabarista.Application.Services
 {
-    public class FilterGrainService:IFilterGrainService
+    public class FilterGrainService : IFilterGrainService
     {
         private readonly IUnitOfWork _uof;
         private readonly IMapper _mapper;
@@ -37,7 +37,7 @@ namespace Malabarista.Application.Services
                  n.Taste.GrainNotes.TerciaryNote == pTasteDTO.PronouncedNote
                 )
                 .GroupBy(n => n.Name)
-                .Select(group => new GrainByTasteDTO 
+                .Select(group => new GrainByTasteDTO
                 {
                     Name = group.Key,
                     GrainTasteDTO = group.ToList()

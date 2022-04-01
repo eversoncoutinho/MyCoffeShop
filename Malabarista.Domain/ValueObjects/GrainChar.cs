@@ -10,21 +10,22 @@ namespace Malabarista.Domain.ValueObjects
             string pvariety, 
             int paltitude, 
             string porigin, 
-            string pdescription
+            string pdescription,
+            string pimgUrl
             )
         {
             Variety = pvariety;
             Altitude = paltitude;
             Origin = porigin;
             Description = pdescription;
-            
+            ImgUrl = pimgUrl;
         }
 
         public string Variety { get; set; }
         public int Altitude { get; set; }
         public string Origin { get; set; }
         public string Description { get; set; }
-
+        public string ImgUrl { get; set; }
         protected override bool EqualsCore(GrainChar other)
         {
             return Variety == other.Variety

@@ -17,6 +17,7 @@ namespace Malabarista.Application.DTOs
         public string Producer { get; set; }
         public decimal Weight { get; set; }
         public Taste Taste { get; set; }
+        public int Year { get; set; }
         //public DateTime DataCadastro { get; set; } = DateTime.Now;
 
     }

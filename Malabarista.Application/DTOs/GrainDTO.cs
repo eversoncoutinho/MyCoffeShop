@@ -9,10 +9,17 @@ namespace Malabarista.Application.DTOs
     public class GrainDTO
     {
 
-        public GrainDTO() {            
-        
-        }
-        public GrainDTO(int id, string name, GrainChar grainChar, string process, string roasterProfile, string roaster, string producer, decimal weight, TasteDTO ptaste)
+        public GrainDTO( ) { }
+        public GrainDTO(int id,
+                                string name, 
+                                GrainChar grainChar, 
+                                string process, 
+                                string roasterProfile, 
+                                string roaster, 
+                                string producer, 
+                                decimal weight, 
+                                TasteDTO ptaste,
+                                string pimgUrl)
         {
             Id = id;
             Name = name;
@@ -23,18 +30,19 @@ namespace Malabarista.Application.DTOs
             Producer = producer;
             Weight = weight;
             Taste = ptaste;
+            
         }
 
-        
+
         public int Id { get; set; }
         public string Name { get; set; }
-        public TasteDTO Taste { get; set; }        
+        public TasteDTO Taste { get; set; }
         public GrainChar GrainChar { get; set; } //Colocar como objeto de valor
         public string Process { get; set; } //natural, wash, honey, fermentated
         public string RoasterProfile { get; set; } //espresso, filter, Omni Roast
         public string Roaster { get; set; }
         public string Producer { get; set; }
-        public decimal Weight { get; set; }       
+        public decimal Weight { get; set; }
         public DateTime DataCadastro { get; set; } = DateTime.Now;
 
     }
