@@ -18,8 +18,8 @@ namespace Malabarista.Application.DTOs
                                 string roaster, 
                                 string producer, 
                                 decimal weight, 
-                                TasteDTO ptaste,
-                                string pimgUrl)
+                                TasteDTO ptaste
+                                )
         {
             Id = id;
             Name = name;

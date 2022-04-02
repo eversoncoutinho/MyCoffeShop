@@ -58,6 +58,7 @@ namespace Malabarista.API.Controllers
                 }
             catch (Exception)
                 {
+                
                     return StatusCode(StatusCodes.Status500InternalServerError, "Erro no servidor");
                 };
             }
