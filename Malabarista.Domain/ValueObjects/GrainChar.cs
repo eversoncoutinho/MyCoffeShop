@@ -31,7 +31,8 @@ namespace Malabarista.Domain.ValueObjects
             return Variety == other.Variety
                 && Altitude == other.Altitude
                 && Origin == other.Origin
-                && Description == other.Description;
+                && Description == other.Description
+                && ImgUrl == other.ImgUrl;
                 
         }
 

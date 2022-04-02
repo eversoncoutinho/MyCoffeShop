@@ -8,7 +8,7 @@ namespace Malabarista.Application.DTOs
 {
     public class GrainTasteDTO
     {
-
+       
         public string Name { get; set; }
         public GrainChar GrainChar { get; set; }
         public EProcess Process { get; set; }
