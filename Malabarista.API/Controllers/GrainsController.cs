@@ -7,9 +7,8 @@ using Malabarista.Domain.Entities;
 using Malabarista.Domain.Interfaces;
 using AutoMapper;
 using Malabarista.Application.DTOs;
-using Malabarista.Application.Services;
-using Malabarista.Application.Interfaces;
 using Malabarista.Domain.ValueObjects;
+using Malabarista.Application.Interfaces;
 //using System.Web.Http;
 
 namespace Malabarista.API.Controllers
@@ -58,7 +57,6 @@ namespace Malabarista.API.Controllers
                 }
             catch (Exception)
                 {
-                
                     return StatusCode(StatusCodes.Status500InternalServerError, "Erro no servidor");
                 };
             }
