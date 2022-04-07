@@ -11,6 +11,8 @@ namespace Malabarista.Application.DTOs
         {
             public string Name { get; set; }
             public List<GrainTasteDTO> GrainTasteDTO { get; set; }
+        
         }
+
     }
 

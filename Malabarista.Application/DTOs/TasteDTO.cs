@@ -9,16 +9,15 @@ namespace Malabarista.Application.DTOs
 {
     public class TasteDTO
     {
-        public TasteDTO(int id, GrainNotes grainNotes, string pronouncedNote)
+        public TasteDTO(int id, GrainNotes grainNotes)
         {
             Id = id;
             GrainNotes = grainNotes;
-            PronouncedNote = pronouncedNote;
         }
 
         public int Id { get; set; }
         public int Year { get; set; }
         public GrainNotes GrainNotes { get; set; }
-        public string PronouncedNote { get; set; }
+      
     }
 }

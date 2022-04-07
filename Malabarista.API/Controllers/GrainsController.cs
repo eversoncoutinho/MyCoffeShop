@@ -33,11 +33,7 @@ namespace Malabarista.API.Controllers
         [HttpGet("taste")]
         public ActionResult<List<GrainByTasteDTO>> GetGrainsByTaste([FromQuery] string pronoucedNote)
         {
-            
-            var tasteDTO = new TasteChooseDTO(null,pronoucedNote);
-//          var testDTO = new TasteChooseDTO(new GrainNotes(taste.GrainNotes, "", ""), taste.PronouncedNote);
-
-            return ifilterGrainService.GetGrainByNotes(tasteDTO);
+            return ifilterGrainService.GetGrainByNotes(pronoucedNote);
         }
         
         // GET: api/Grains

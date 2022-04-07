@@ -29,7 +29,7 @@ namespace Malabarista.API
 
         public void ConfigureServices(IServiceCollection services)
         {
-            //Mapaementod as DTOs para os Entities
+            //Mapaemento das DTOs
 
             var mappingConfig = new MapperConfiguration(mc =>
             {
@@ -39,9 +39,12 @@ namespace Malabarista.API
             IMapper mapper = mappingConfig.CreateMapper();
             services.AddSingleton(mapper);
             
-            //Adicionando o Unit of Work
+            //Addd Unit of Work
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            //Services
             services.AddScoped<IFilterGrainService, FilterGrainService>();
+            services.AddScoped<IGrainCountService, GrainCountService>();
 
 
 

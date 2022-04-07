@@ -2,11 +2,6 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Malabarista.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Malabarista.Domain.ValueObjects;
 
 namespace Malabarista.Infra.Data
@@ -14,7 +9,6 @@ namespace Malabarista.Infra.Data
     public class MalabaristaDbContext: IdentityDbContext
     
     {
-        //Sessão do banco de dados
         public MalabaristaDbContext(DbContextOptions<MalabaristaDbContext> options) : base(options) { }
         //DbContextOptions é configurada em Startup
 

@@ -10,13 +10,14 @@ namespace Malabarista.Domain.ValueObjects
     public class GrainNotes : ValueObject<GrainNotes>
     {
         GrainNotes() { }
-        public GrainNotes(string primaryNote, string secondaryNote, string terciaryNote)
+        public GrainNotes(string primaryNote, string secondaryNote, string terciaryNote, string pronouncedNote)
         {
             PrimaryNote = primaryNote;
             SecondaryNote = secondaryNote;
             TerciaryNote = terciaryNote;
+            PronouncedNote = pronouncedNote;
         }
-
+        public string PronouncedNote { get; set; }
         public string PrimaryNote { get; set; }
         public string SecondaryNote { get; set; }
         public string TerciaryNote { get; set; }

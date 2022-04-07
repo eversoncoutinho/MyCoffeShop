@@ -11,7 +11,8 @@ namespace Malabarista.Application.Mappings
             CreateMap<Grain, GrainDTO>().ReverseMap();
             CreateMap<Taste, TasteDTO>().ReverseMap();
             CreateMap<Grain, GrainTasteDTO>().ReverseMap();
-            
+            CreateMap<Grain, GrainByTasteDTO>().ReverseMap();
+
 
         }
     }

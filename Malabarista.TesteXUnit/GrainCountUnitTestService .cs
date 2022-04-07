@@ -2,20 +2,17 @@ using AutoMapper;
 using Malabarista.Application.DTOs;
 using Malabarista.Application.Mappings;
 using Malabarista.Application.Services;
-using Malabarista.Domain.Entities;
 using Malabarista.Domain.Interfaces;
-using Malabarista.Domain.ValueObjects;
 using Malabarista.Infra.Data;
 using Malabarista.Infra.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Xunit;
 
 namespace Malabarista.TesteXUnit
 {
-    public class GrainByTasteUnitTestService
+    public class GrainCountUnitTestService
     {
 
         private IMapper mapper;
@@ -26,7 +23,7 @@ namespace Malabarista.TesteXUnit
         public static string connectionString =
         "server=bateaquihost.com.br;Database=everson2203211030_malabarista;user=everson2203211030_malabarista;password=Ev@malabarista123";
 
-        static GrainByTasteUnitTestService()
+        static GrainCountUnitTestService( )
         {
             dbContextOptions = new DbContextOptionsBuilder<MalabaristaDbContext>()
             .UseMySql(connectionString, new MySqlServerVersion(new Version()))
@@ -35,7 +32,7 @@ namespace Malabarista.TesteXUnit
         //dências injetadas lá no controller
 
 
-        public GrainByTasteUnitTestService()
+        public GrainCountUnitTestService( )
         {
 
             var config = new MapperConfiguration(cfg =>
@@ -54,19 +51,19 @@ namespace Malabarista.TesteXUnit
 
 
         [Fact]
-        public void GetGrainByNotesService_Return_OkResult()
+        public void GrainCount_Return_Int()
         {           
             
             //Arrange
-            var testDTO = "Chocolate";
-            var service = new FilterGrainService(repository, mapper);
+//            var testDTO = new TasteChooseDTO(new GrainNotes("", "", ""), "Chocolate");
+            var service = new GrainCountService(repository);
             
             //Act
-            var data = service.GetGrainByNotes(testDTO);
-
+            var data = service.GrainCount();
+            
             //Assert
-            //            Assert.IsType<IQueryable<GrainTasteDTO>>(data.GetType());
-            Assert.IsNotType<List<GrainByTasteDTO>>(data.GetType());
+
+            Assert.IsType<Int32>(data); 
         }
     }
 }

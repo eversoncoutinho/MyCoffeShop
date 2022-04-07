@@ -39,15 +39,13 @@ namespace Malabarista.Domain.Entities
             Taste = ptaste;
         }
 
-        public string Name { get; private set; } //O objeto somente é modificado via construtor
-        public GrainChar GrainChar { get; private set; } //Colocar como objeto de valor
-        //public string Variety { get; private set; }
+        public string Name { get; private set; } 
+        public GrainChar GrainChar { get; private set; } 
         public EProcess Process { get; private set; }
         public ERoasterProfile RoasterProfile { get; private set; }
         public string Roaster { get; private set; } //OV
         public string Producer { get; private set; } //OV
         public decimal Weight { get; set; }
-
         public DateTime DataCadastro { get; private set; } 
 
         public Taste Taste { get; private set; } //varios representante pode ter varios produtos

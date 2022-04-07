@@ -23,27 +23,36 @@ namespace Malabarista.Application.Services
 
 
 
-        public List<GrainByTasteDTO> GetGrainByNotes(TasteChooseDTO pTasteDTO)
+        public List<GrainByTasteDTO> GetGrainByNotes(string pTasteDTO)
         {
 
             var grainsLista = _uof.GrainRepository.GetGrainsAndTaste().ToList();
 
             var grainsSugestDTO = _mapper.Map<List<GrainTasteDTO>>(grainsLista);
 
+
             var grainsG = grainsSugestDTO.Where(n =>
-                 n.Taste.PronouncedNote == pTasteDTO.PronouncedNote ||
-                 n.Taste.GrainNotes.PrimaryNote == pTasteDTO.PronouncedNote ||
-                 n.Taste.GrainNotes.SecondaryNote == pTasteDTO.PronouncedNote ||
-                 n.Taste.GrainNotes.TerciaryNote == pTasteDTO.PronouncedNote
+                 n.Taste.GrainNotes.PronouncedNote == pTasteDTO
+                ||n.Taste.GrainNotes.PrimaryNote == pTasteDTO
+                || n.Taste.GrainNotes.SecondaryNote == pTasteDTO
+                || n.Taste.GrainNotes.TerciaryNote == pTasteDTO
                 )
-                .GroupBy(n => n.Name)
+               .OrderByDescending(n => n.Taste.GrainNotes.PronouncedNote == pTasteDTO)
+            .ThenByDescending(n => n.Taste.GrainNotes.PrimaryNote == pTasteDTO)
+            .ThenByDescending(n => n.Taste.GrainNotes.SecondaryNote == pTasteDTO)
+            .ThenByDescending(n => n.Taste.GrainNotes.TerciaryNote == pTasteDTO)
+            .ToList()
+                .GroupBy(g => g.Name)
                 .Select(group => new GrainByTasteDTO
                 {
                     Name = group.Key,
                     GrainTasteDTO = group.ToList()
-                }).Distinct().
-                ToList();
-
+            
+                })
+               
+                .Distinct()
+                .ToList();
+            
 
             return grainsG;
         }

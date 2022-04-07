@@ -18,7 +18,7 @@ namespace Malabarista.Application.DTOs
                                 string roaster, 
                                 string producer, 
                                 decimal weight, 
-                                TasteDTO ptaste
+                                Taste ptaste
                                 )
         {
             Id = id;
@@ -36,7 +36,7 @@ namespace Malabarista.Application.DTOs
 
         public int Id { get; set; }
         public string Name { get; set; }
-        public TasteDTO Taste { get; set; }
+        public Taste Taste { get; set; }
         public GrainChar GrainChar { get; set; } //Colocar como objeto de valor
         public string Process { get; set; } //natural, wash, honey, fermentated
         public string RoasterProfile { get; set; } //espresso, filter, Omni Roast
