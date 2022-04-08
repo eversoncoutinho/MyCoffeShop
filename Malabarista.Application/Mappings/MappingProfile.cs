@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Malabarista.Application.DTOs; //Acesso aos DTOs
 using Malabarista.Domain.Entities; //Acesso aos dominios
+using Microsoft.EntityFrameworkCore.Query;
 
 namespace Malabarista.Application.Mappings
 {
@@ -12,6 +13,7 @@ namespace Malabarista.Application.Mappings
             CreateMap<Taste, TasteDTO>().ReverseMap();
             CreateMap<Grain, GrainTasteDTO>().ReverseMap();
             CreateMap<Grain, GrainByTasteDTO>().ReverseMap();
+            CreateMap<IIncludableQueryable<Grain, Taste>,GrainDTO>().ReverseMap();
 
 
         }

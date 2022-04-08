@@ -12,7 +12,8 @@ namespace Malabarista.Application.Interfaces
     {
 
         ///<summary>Recebe a entidade Taste e retorna uma lista de Graos</summary>
+        List<GrainByTasteDTO> GetGrainByNotes(string pTasteDTO);
 
-        List<GrainByTasteDTO> GetGrainByNotes(string pTasteDTO); 
+        GrainDTO GetGrainsTasteById(int id);
     }
 }

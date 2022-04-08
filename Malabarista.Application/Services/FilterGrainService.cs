@@ -21,12 +21,10 @@ namespace Malabarista.Application.Services
             _mapper = mapper;
         }
 
-
-
         public List<GrainByTasteDTO> GetGrainByNotes(string pTasteDTO)
         {
 
-            var grainsLista = _uof.GrainRepository.GetGrainsAndTaste().ToList();
+            var grainsLista = _uof.GrainRepository.GetGrainsTaste().ToList();
 
             var grainsSugestDTO = _mapper.Map<List<GrainTasteDTO>>(grainsLista);
 
@@ -57,6 +55,11 @@ namespace Malabarista.Application.Services
             return grainsG;
         }
 
-
+        public GrainDTO GetGrainsTasteById(int id)
+        {
+           var selecao = _uof.GrainRepository.GetGrainsTasteById(id);
+           var resultadoDto = _mapper.Map<GrainDTO>(selecao);
+            return  resultadoDto;
+        }
     }
 }

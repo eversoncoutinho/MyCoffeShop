@@ -36,13 +36,15 @@ namespace Malabarista.API.Controllers
             return ifilterGrainService.GetGrainByNotes(pronoucedNote);
         }
         
+
+
         // GET: api/Grains
         [HttpGet]
         public ActionResult<List<GrainDTO>> GetGrains()
         {
             //
             try {
-            var getGrainTaste = _uof.GrainRepository.GetGrainsAndTaste();
+            var getGrainTaste = _uof.GrainRepository.GetGrainsTaste();
             
             if (getGrainTaste.Count()==0)
             {
@@ -62,7 +64,8 @@ namespace Malabarista.API.Controllers
         public ActionResult<GrainDTO> GetGrain(int id)
         {
             try { 
-            var grain = _uof.GrainRepository.GetById(n=>n.Id==id);
+               
+            var grain = ifilterGrainService.GetGrainsTasteById(id);
 
             if (grain == null)
             {

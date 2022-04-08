@@ -2,6 +2,7 @@
 using Malabarista.Domain.Interfaces;
 using Malabarista.Infra.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query;
 using System.Linq;
 
 namespace Malabarista.Infra.Repositories
@@ -15,9 +16,15 @@ namespace Malabarista.Infra.Repositories
             _context = contexto;
         }
         
-        public IQueryable<Grain> GetGrainsAndTaste()
+        public IQueryable<Grain> GetGrainsTaste()
         {
             IQueryable<Grain> resultado = _context.Grains.Include(n => n.Taste);
+            return resultado;
+        }
+
+        public Grain GetGrainsTasteById(int id)
+        {
+            var resultado = _context.Grains.Include(n => n.Taste).SingleOrDefault(n => n.Id == id);
             return resultado;
         }
     }

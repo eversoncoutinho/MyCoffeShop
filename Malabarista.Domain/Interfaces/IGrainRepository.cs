@@ -1,4 +1,5 @@
 ﻿using Malabarista.Domain.Entities;
+using Microsoft.EntityFrameworkCore.Query;
 using System.Linq;
 
 namespace Malabarista.Domain.Interfaces
@@ -8,8 +9,10 @@ namespace Malabarista.Domain.Interfaces
         /// <summary>
         /// Inclui o Taste e está marcado como AsQueryable
         /// </summary>
-        
-        IQueryable<Grain> GetGrainsAndTaste();
+        IQueryable<Grain> GetGrainsTaste();
+
+
+        Grain GetGrainsTasteById(int id);
 
     }
 }
