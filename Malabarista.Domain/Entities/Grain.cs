@@ -43,7 +43,7 @@ namespace Malabarista.Domain.Entities
         public GrainChar GrainChar { get; private set; } 
         public EProcess Process { get; private set; }
         public ERoasterProfile RoasterProfile { get; private set; }
-        public string Roaster { get; private set; } //OV
+        public string Roaster { get; private set; } //OBjs
         public string Producer { get; private set; } //OV
         public decimal Weight { get; set; }
         public DateTime DataCadastro { get; private set; } 
