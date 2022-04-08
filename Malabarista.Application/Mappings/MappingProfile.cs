@@ -13,7 +13,6 @@ namespace Malabarista.Application.Mappings
             CreateMap<Taste, TasteDTO>().ReverseMap();
             CreateMap<Grain, GrainTasteDTO>().ReverseMap();
             CreateMap<Grain, GrainByTasteDTO>().ReverseMap();
-            CreateMap<IIncludableQueryable<Grain, Taste>,GrainDTO>().ReverseMap();
 
 
         }

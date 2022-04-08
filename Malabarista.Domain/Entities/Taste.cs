@@ -17,6 +17,6 @@ namespace Malabarista.Domain.Entities
 
         public GrainNotes GrainNotes { get; private set; }
 
-        public ICollection<Grain> Grains { get; private set; }
+        public ICollection<Grain> GrainsNearTaste { get; private set; }
     }
 }

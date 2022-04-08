@@ -33,7 +33,7 @@ namespace Malabarista.Infra.Data
             taste.OwnsOne(typeof(GrainNotes),"GrainNotes");
 
             builder.Entity<Grain>().HasOne(b=>b.Taste)
-                .WithMany(a=>a.Grains).OnDelete(DeleteBehavior.Cascade)
+                .WithMany(a=>a.GrainsNearTaste).OnDelete(DeleteBehavior.Cascade)
                 .HasForeignKey("TasteId");
                 
 
