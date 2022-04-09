@@ -23,6 +23,8 @@ namespace Malabarista.Infra.Repositories
             var terc = _context.Tastes.Select(n => n.GrainNotes.TerciaryNote);
 
             var result = pron.Union(prim).Union(seco).Union(terc).ToList();
+            result.Sort();
+            
             return result;
                 }
     }
