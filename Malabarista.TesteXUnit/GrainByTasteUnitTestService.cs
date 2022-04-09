@@ -35,7 +35,7 @@ namespace Malabarista.TesteXUnit
         //dências injetadas lá no controller
 
 
-        public GrainByTasteUnitTestService()
+        public GrainByTasteUnitTestService( )
         {
 
             var config = new MapperConfiguration(cfg =>

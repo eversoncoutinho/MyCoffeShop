@@ -1,13 +1,12 @@
-﻿using Malabarista.Domain.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Malabarista.Domain.Interfaces
+namespace Malabarista.Application.Interfaces
 {
-    public interface ITasteRepository:IRepository<Taste>
+    public interface ITasteService
     {
         List<string> GetTastes( );
     }

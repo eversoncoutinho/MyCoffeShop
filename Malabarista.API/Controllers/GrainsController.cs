@@ -107,12 +107,7 @@ namespace Malabarista.API.Controllers
         {
             var grain = _mapper.Map<Grain>(grainDto);
 
-            //var taste = new Taste(grain.Taste.Year,
-            //                      grain.Taste.GrainNotes,
-            //                      grain.Taste.PronouncedNote);
-            _uof.GrainRepository.Add(grain);
-            //_uof.TasteRepository.Add(taste);
-            
+            _uof.GrainRepository.Add(grain);            
 
             _uof.Commit();
 
@@ -120,26 +115,6 @@ namespace Malabarista.API.Controllers
             return CreatedAtAction("GetGrain", //precisa ter o mesmo nome da action 
                                     new { id = grain.Id }, grainDTO);
 
-            //try
-            //{
-            //    var grain = _mapper.Map<Grain>(grainDto);
-            //    if (grain.Name==null)
-            //    {
-            //        return NotFound("JsonNulo");
-            //    }
-
-            //    _uof.GrainRepository.Add(grain);
-            //    _uof.Commit();
-
-            //    //volta para o cliente via DTO
-            //    var grainDTO = _mapper.Map<GrainDTO>(grain);
-            //    return CreatedAtAction("GetGrain", //precisa ter o mesmo nome da action 
-            //                            new { id = grain.Id }, grainDTO);
-            //}
-            //catch (Exception)
-            //{
-            //    return StatusCode(StatusCodes.Status400BadRequest, $"Não foi possível criar a categoria {grainDto.Name}");
-            //}
         }
 
         // DELETE: api/Grains/5
