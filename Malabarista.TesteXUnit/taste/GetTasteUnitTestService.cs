@@ -2,22 +2,18 @@ using AutoMapper;
 using Malabarista.Application.DTOs;
 using Malabarista.Application.Mappings;
 using Malabarista.Application.Services;
-using Malabarista.Domain.Entities;
 using Malabarista.Domain.Interfaces;
-using Malabarista.Domain.ValueObjects;
 using Malabarista.Infra.Data;
 using Malabarista.Infra.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Xunit;
 
-namespace Malabarista.TesteXUnit
+namespace Malabarista.TesteXUnit.Taste
 {
-    public class GrainTasteByIdUnitTestService
+    public class GetTasteUnitTestService
     {
-
         private IMapper mapper;
         private IUnitOfWork repository;
 
@@ -26,7 +22,7 @@ namespace Malabarista.TesteXUnit
         public static string connectionString =
         "server=bateaquihost.com.br;Database=everson2203211030_malabarista;user=everson2203211030_malabarista;password=Ev@malabarista123";
 
-        static GrainTasteByIdUnitTestService( )
+        static GetTasteUnitTestService( )
         {
             dbContextOptions = new DbContextOptionsBuilder<MalabaristaDbContext>()
             .UseMySql(connectionString, new MySqlServerVersion(new Version()))
@@ -36,7 +32,7 @@ namespace Malabarista.TesteXUnit
         //dências injetadas lá no controller
 
 
-        public GrainTasteByIdUnitTestService( )
+        public GetTasteUnitTestService( )
         {
 
             var config = new MapperConfiguration(cfg =>
@@ -46,28 +42,26 @@ namespace Malabarista.TesteXUnit
             });
             mapper = config.CreateMapper(); //instância do automapper
 
-            
+
             var context = new MalabaristaDbContext(dbContextOptions);
-            
+
             repository = new UnitOfWork(context);
 
         }
 
-
         [Fact]
-        public void GetGrainTasteByIdService_Return_OkResult( )
+        public void GetTasteService_Return_OkResult()
         {           
             
             //Arrange
-            var id = 46;
-            var service = new FilterGrainService(repository, mapper);
+            var service = new TasteService(repository);
             
             //Act
-            var data = service.GetGrainsTasteById(id);
+            var data = service.GetTastes();
 
             //Assert
             //            Assert.IsType<IQueryable<GrainTasteDTO>>(data.GetType());
-            Assert.IsNotType<List<GrainDTO>>(data.GetType());
+            Assert.IsNotType<List<string>>(data.GetType());
         }
     }
 }

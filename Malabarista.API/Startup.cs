@@ -45,7 +45,7 @@ namespace Malabarista.API
             //Services
             services.AddScoped<IFilterGrainService, FilterGrainService>();
             services.AddScoped<IGrainCountService, GrainCountService>();
-
+            services.AddScoped<ITasteService, TasteService>();
 
 
             var mySqlStringConection = Configuration["ConnectionStrings:DefaultString"];
