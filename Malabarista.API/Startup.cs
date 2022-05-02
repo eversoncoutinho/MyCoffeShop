@@ -1,5 +1,3 @@
-
-
 using AutoMapper;
 using Malabarista.Application.Interfaces;
 using Malabarista.Application.Mappings;
@@ -29,6 +27,7 @@ namespace Malabarista.API
 
         public void ConfigureServices(IServiceCollection services)
         {
+            
             //Mapaemento das DTOs
 
             var mappingConfig = new MapperConfiguration(mc =>

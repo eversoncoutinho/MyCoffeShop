@@ -24,7 +24,8 @@ namespace Malabarista.Domain.ValueObjects
 
         protected override bool EqualsCore(GrainNotes other)
         {
-            return PrimaryNote == other.PrimaryNote
+            return PronouncedNote==other.PronouncedNote 
+                        &&PrimaryNote == other.PrimaryNote
                          && SecondaryNote == other.SecondaryNote
                          && TerciaryNote == other.TerciaryNote;
                   

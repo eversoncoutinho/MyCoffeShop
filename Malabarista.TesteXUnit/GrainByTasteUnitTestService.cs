@@ -8,6 +8,7 @@ using Malabarista.Domain.ValueObjects;
 using Malabarista.Infra.Data;
 using Malabarista.Infra.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,19 +21,20 @@ namespace Malabarista.TesteXUnit
 
         private IMapper mapper;
         private IUnitOfWork repository;
-
         public static DbContextOptions<MalabaristaDbContext> dbContextOptions { get; }
 
         public static string connectionString =
         "server=bateaquihost.com.br;Database=everson2203211030_malabarista;user=everson2203211030_malabarista;password=Ev@malabarista123";
 
-        static GrainByTasteUnitTestService()
+        static GrainByTasteUnitTestService( )
         {
             dbContextOptions = new DbContextOptionsBuilder<MalabaristaDbContext>()
             .UseMySql(connectionString, new MySqlServerVersion(new Version()))
             .Options;
         }
-        //dências injetadas lá no controller
+
+
+        //Colocar as mesmas dependências injetadas lá no controller
 
 
         public GrainByTasteUnitTestService( )

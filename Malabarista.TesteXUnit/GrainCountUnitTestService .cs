@@ -18,15 +18,17 @@ namespace Malabarista.TesteXUnit
         private IMapper mapper;
         private IUnitOfWork repository;
 
+       
         public static DbContextOptions<MalabaristaDbContext> dbContextOptions { get; }
 
         public static string connectionString =
-        "server=bateaquihost.com.br;Database=everson2203211030_malabarista;user=everson2203211030_malabarista;password=Ev@malabarista123";
+        "Adicione sua conection string aqui";
 
         static GrainCountUnitTestService( )
         {
+            
             dbContextOptions = new DbContextOptionsBuilder<MalabaristaDbContext>()
-            .UseMySql(connectionString, new MySqlServerVersion(new Version()))
+            .UseMySql(MyConectionString.connectionString, new MySqlServerVersion(new Version()))
             .Options;
         }
         //dências injetadas lá no controller
